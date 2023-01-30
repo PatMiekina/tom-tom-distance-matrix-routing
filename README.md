@@ -4,6 +4,10 @@ This app was built following [a tutorial by Ania Kubów](https://www.youtube.com
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Installing
+
+To install all the dependencies run `npm install` in your terminal.
+
 ## Available Scripts
 
 In the project directory, you can run:
