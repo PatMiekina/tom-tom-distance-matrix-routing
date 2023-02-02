@@ -23,31 +23,49 @@ const App = () => {
 
     setMap(map)
 
+    const addMarker = () => {
+
+      const element = document.createElement('div')
+      element.className = 'marker'
+
+      const marker = new tt.Marker({
+        draggable: true,
+        element: element,
+      })
+      .setLngLat([longitude, latitude])
+      .addTo(map)
+    }
+
+    addMarker()
+
     return () => map.remove()
   }, [longitude, latitude])
 
 
   return (
-    <div className='App'>
-      <div ref={mapElement} className='map'></div>
-      <div className='search-bar'>
-        <h1>Where to?</h1>
-        <input
-          type='text'
-          id='longitude'
-          className='longitude'
-          placeholder='Enter longitude'
-          onChange={(e) => { setLongitude(e.target.value) }}
-        />
-        <input
-          type='text'
-          id='latitude'
-          className='latitude'
-          placeholder='Enter latitude'
-          onChange={(e) => { setLatitude(e.target.value) }}
-        />
-      </div>
-    </div>
+    <>
+      { map && <div className='app'>
+        <div ref={mapElement} className='map'></div>
+        <div className='search-bar'>
+          <h1>Where to?</h1>
+          {/* Fix to onSubmit - onChange does not take values less than zero and crashes on other values */}
+          <input
+            type='text'
+            id='longitude'
+            className='longitude'
+            placeholder='Enter longitude'
+            onChange={(e) => { setLongitude(e.target.value) }}
+          />
+          <input
+            type='text'
+            id='latitude'
+            className='latitude'
+            placeholder='Enter latitude'
+            onChange={(e) => { setLatitude(e.target.value) }}
+          />
+        </div>
+      </div>}
+    </>
   )
 }
 
