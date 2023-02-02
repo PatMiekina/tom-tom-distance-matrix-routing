@@ -30,7 +30,9 @@ const App = () => {
         bottom: [0, -25]
       }
 
-      const popup = new tt.Popup({ offset: popupOffset}).setHTML('Here you are!')
+      let popupText = (longitude == 21.008291141968442 && latitude == 52.22118783000221) ? 'Watch out for the cupcakes!' : 'Here you are!'
+
+      const popup = new tt.Popup({ offset: popupOffset}).setHTML(popupText)
       const element = document.createElement('div')
       element.className = 'marker'
 
